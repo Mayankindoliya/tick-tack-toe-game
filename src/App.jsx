@@ -15,11 +15,7 @@ function App() {
 
     setGameTurns(prevTurns => {
 
-      let currentPlayer = 'X';
-
-      if (prevTurns.length > 0 && prevTurns.length[0].player === 'X') {
-        currentPlayer = 'O';
-      }
+      const currentPlayer = prevTurns.length > 0 && prevTurns[0].player === 'X' ? 'O' : 'X';
 
       const updatedTurns = [
         { square: { row: rowIndex, col: colIndex }, player: currentPlayer },
@@ -46,7 +42,7 @@ function App() {
         turns={gameTurns}
       />
     </div>
-    < Log />
+    < Log turns={gameTurns} />
   </main>
 }
 
