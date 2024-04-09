@@ -54,7 +54,8 @@ function App() {
       firstSquareSymbol === secondSquareSymbol &&
       firstSquareSymbol === thirdSquareSymbol
     ) {
-      winner = firstSquareSymbol;
+      winner = players[firstSquareSymbol];
+      break;
     }
   }
 
@@ -78,7 +79,7 @@ function App() {
     setGameTurns([]);
   }
 
-  function handlePlayerCHnageName(newName, symbol) {
+  function handlePlayerNameChange(symbol, newName) {
     setPlayers((prevPlayers) => {
       return {
         ...prevPlayers,
@@ -100,6 +101,7 @@ function App() {
             initialName="Player 2"
             symbol="O"
             isActive={activePlayer === "O"}
+            onChangeName={handlePlayerNameChange}
           />
         </ol>
         {(winner || hasDraw) && (
